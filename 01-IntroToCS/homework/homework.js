@@ -10,7 +10,7 @@ function BinarioADecimal(num) {
       //sume ala variable sum
     }
   }
-  return sum;
+  return sum;//retornamos lo que tenemos en la variable sum
 
 }
 
