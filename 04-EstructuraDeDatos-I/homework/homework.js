@@ -15,11 +15,29 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
+  //if (n < 0) throw new Error ('factorial solo con numeros positivos')
+  //if (Number.isInteger(n) !== true) throw new Error ('Factorial solo con numeros enteros')
+  //                                 return 'No se aceptan numeros negativos en un factorial'
+  if (n === 1) return 1;
+  return n * nFactorial(n-1);
 }
 
 function nFibonacci(n) {
+  if (n === 0 || n === 1) return n;
+  return nFibonacci(n-2) + nFibonacci(n-1);
 }
-
+/*
+//var array = []
+function restar(num, array = []){
+  //var array = []
+ if (num === 0) return array
+ console.log(array)
+ array.push(num)
+ return restar(num-1, array)
+}
+console.log(restar(8))
+console.log(restar(7))
+*/
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
   - enqueue: agrega un valor respetando el orden.
@@ -28,10 +46,51 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 
 Pueden utilizar class o función constructora.
 */
+//CLASS
+
+/*
+class Queue {
+  constructor() {
+    this.queue = [];
+
+  }
+  enqueue(value) {
+    this.queue.push(value);
+  }
+  dequeue(value) {
+    return this.queue.shift();
+  }
+  size(value) {
+    return this.queue.length;
+  }
+}
+
+let queue = new Queue();
+queue.enqueue(2);
+*/
+
+//FUNCTION CONSTRUCTORA ES MEJOR
 
 function Queue() {
-
+  this.queue = [];
 }
+
+Queue.prototype.enqueue = function(value){
+  this.queue.push(value);
+}
+
+Queue.prototype.dequeue = function(value){
+  return this.queue.shift();
+}
+
+Queue.prototype.size = function(value){
+  return this.queue.length;
+}
+
+let queue = new Queue();
+queue.enqueue(2);
+
+
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------

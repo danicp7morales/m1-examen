@@ -46,8 +46,9 @@ Por ejemplo:
 ```javascript
 function lastElement(array) {
   if (array.length > 0)
-    return array[array.length - 1];
+    return array[array.length - 1];// return array[7] una suposicion si su array.length es8
   else
+  //throw va a lanzar 
     throw "No existe el último elemento de un arreglo vacío.";
 }
 
@@ -56,7 +57,7 @@ function lastElementPlusTen(array) {
 }
 
 try {
-  print(lastElementPlusTen([]));
+  print(lastElementPlusTen([]));//imprimime esta function
 }
 catch (error) {
   print("Hubo un problema ", error);
@@ -88,7 +89,7 @@ throw new Error('Hola no existe!!!');
 ```
 
 Cuando una excepción es _tirada_, pero no hay nadie que la _atrape_, empieza a subir por el stack de ejecución, hasta que finalmente llega hasta el ambiente global, en donde es _atrapada_ por este. Por lo tanto, cada _enviroment_ va a manejar como quiera la excepción, en general dejan de ejecutar lo que estaban haciendo y te muestran la excepción con un formato particular.
-
+  enviroment = ambiente
 ### Errores con el Event Emitter
 
 En ciertos casos, por la naturaleza asincrónica de JavaScript, podemos perder el rastro de cómo suben las excepciones, o tal vez queremos saber si hay un error o no en otro contexto por el cúal no _subirá_ la excepción. Para resolver esto, podemos usar el __event emitter__ como un emisor de errores. Básicamente, pondríamos un _listener_ a escuchar por un evento de tipo __Error__, y luego, en nuestro código simplemente emitiriamos un evento de este tipo cuando encontremos un error.

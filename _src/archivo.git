@@ -1,0 +1,109 @@
+Creando una nueva rama:
+
+git branch <nombre-de-la-rama>
+
+Visualización de ramas:
+
+git branch
+git branch --list
+
+Borrar una rama:
+
+git branch -d <nombre-de-la-rama>
+
+
+Este comando creará una rama en local. Para enviar (push) la nueva rama al repositorio remoto,
+ necesitarás usar el siguiente comando:
+
+git push <nombre-remoto> <nombre-rama>
+
+Hay un par de formas de descargar el código fuente, pero principalmente yo prefiero clonar
+ de la forma con https:
+
+git clone <https://link-con-nombre-del-repositorio>
+
+
+
+git checkout <nombre-de-la-rama>
+
+3. Git checkout
+Este es también uno de los comandos más utilizados en Git. Para trabajar en una rama,
+ primero tienes que cambiarte a ella. Usaremos git checkout principalmente para cambiarte
+  de una rama a otra. También lo podemos usar para chequear archivos y commits.
+
+
+  Hay también un comando de acceso directo que te permite crear y cambiarte a esa rama al 
+  mismo tiempo:
+
+git checkout -b <nombre-de-tu-rama>
+
+
+
+8. Git pull
+El comando git pull se utiliza para recibir actualizaciones del repositorio remoto. 
+Este comando es una combinación del git fetch y del git merge lo cual significa que cundo usemos
+ el git pull recogeremos actualizaciones del repositorio remoto (git fetch) 
+ e inmediatamente aplicamos estos últimos cambios en local (git merge).
+
+git pull <nombre-remoto>
+
+9. Git revert
+A veces, necesitaremos deshacer los cambios que hemos hecho. Hay varias maneras para deshacer 
+nuestros cambios en local y/o en remoto (dependiendo de lo que necesitemos), pero necesitaremos
+ utilizar cuidadosamente estos comandos para evitar borrados no deseados.
+
+Una manera segura para deshacer nuestras commits es utilizar git revert. Para ver nuestro 
+historial de commits, primero necesitamos utilizar el  git log -- oneline:
+
+histo-rico-git
+histórico de git en mi rama master
+Entonces, solo necesitamos especificar el código de comprobación que encontrarás junto al commit
+ que queremos deshacer:
+
+git revert 3321844
+Después de esto, verás una pantalla como la de abajo -tan solo presiona shift + q para salir:
+
+resim-2
+El comando git revert deshará el commit que le hemos indicado, pero creará un nuevo commit
+ deshaciendo la anterior:
+
+git-revert
+commit generado con el git revert
+La ventaja de utilizar git revert es que no afecta al commit histórico. Esto significa que
+ puedes seguir viendo todos los commits en tu histórico, incluso los revertidos.
+
+Otra medida de seguridad es que todo sucede en local a no ser que los enviemos al repositorio
+ remoto. Por esto es que git revert es más seguro de usar y es la manera preferida para deshacer
+  los commits.
+
+
+
+
+ 10. Git merge
+Cuando ya hayas completado el desarrollo de tu proyecto en tu rama y todo funcione correctamente
+, el último paso es fusionar la rama con su rama padre (dev o master). 
+Esto se hace con el comando git merge.
+
+Git merge básicamente integra las características de tu rama con todos los commits realizados
+ a las ramas dev (o master).  Es importante que recuerdes que tienes que estar en esa rama 
+ específica que quieres fusionar  con tu rama de características.
+
+Por ejemplo, cuando quieres fusionar tu rama de características en la rama dev:
+
+Primero, debes cambiarte a la rama dev:
+
+git checkout dev
+Antes de fusionar, debes actualizar tu rama dev local:
+
+git fetch
+Por último, puedes fusionar tu rama de características en la rama dev:
+
+git merge <nombre-de-la-rama>
+Pista: Asegúrate de que tu rama dev tiene la última versión antes de fusionar otras ramas, 
+si no, te enfrentarás a conflictos u otros problemas no deseados.
+
+Aquí están mis 10 comandos de git más usados cuando me enfrento a la programación en mi día a
+ día. Hay muchas más cosas que aprender sobre Git y las explicaré más
+  adelante en oros artículos. 
+
+

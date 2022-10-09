@@ -118,7 +118,7 @@ for (var key in santi){
 } // imprime todo! inclusive getNombre, que esta en su proto.
 
 for(var key in santi){
- if(santi.hasOwnProperty(key)){
+ if(santi.hasOwnProperty(key)){//solamente las propiedades del objeto santy y no de su prototipo
   console.log( key + ":" + santi[key] );
  }// imprime solo las propiedades del objeto Santi.
 }
@@ -185,6 +185,7 @@ console.log(juan)
 Qué ven de raro en la función `Persona()`? por empezar no retorna nada, y además no está claro a qué hace referencia el keyword `this`. Pero si nos fijamos, cuando la usamos con `new`, vemos que nos creó un objeto con las propiedades definidas en esa función. Para empezar a entender, primero tenemos que saber el `new` es en realidad un operador en JavaScript. Lo que hace es operador es, primero, crear un objeto vacío. Luego invoca la función que le pasamos como argumento, con la particularidad que bindea el nuevo objeto vacio que había creado, de tal forma que en ese nuevo contexto de ejecucieon el keyword `this` haga referencia a este objeto nuevo. Por último retorna ese objeto que había creado (y que fuera modificado por la función ejecutada).
 
 ```javascript
+//bindear es como enlazar
 var a = {};
 Persona().call(a);
 
